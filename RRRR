@@ -1,0 +1,15 @@
+library(plotly)
+library(titanic)
+library(ggplot2)
+setwd("C:/Users/Student/Downloads")
+titanic=read.csv("Train.csv")
+
+titanic$Survived=factor(titanic$Survived)
+
+barplot=ggplot(titanic,aes(x=Pclass,fill=Survived))+geom_bar(position="dodge")+labs(title="Survivors by Passenger Class",x="Passenger Class",y="Count",fill="Survived")+scale_fill_manual(values=c("0"="red","1"="blue"))
+barplot
+density_plot <- ggplot(titanic, aes(x = Age)) +  geom_density(fill = "blue", alpha = 0.5) +  labs(title = "Age Distribution of Passengers", x = "Age",  y = "Density")
+density_plot
+
+scatter_plot=ggplot(titanic,aes(x=Age,y=Fare,color=Survived))+geom_point()+labs(title="Fare vs Age",x="Age",y="Fare")+scale_color_manual(values=c("0"="red","1"="blue"))
+scatter_plot
